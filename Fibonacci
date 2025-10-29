@@ -1,0 +1,32 @@
+import java.util.stream.*;
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+       
+       int first=0,second=1;
+       for(int i=0;i<10;i++)
+       {
+           System.out.print(first+" ");
+           int temp=first+second;
+           first=second;
+           second=temp;
+           
+       }
+       
+       System.out.println("\n**************");
+       // Using Stream
+       System.out.println("Enter number of terms of a numer");
+       Scanner sc=new Scanner(System.in);
+       int limit=sc.nextInt();
+       if(limit<=0)
+          {
+              System.out.println("please Enter Valid Number");
+              return ;
+          }
+       System.out.println("Fabonacci series using Stream");
+       Stream.iterate(new int [] {0,1},num->new int []{num[1],num[0]+num[1]})
+       .limit(limit)
+       .map(num->num[0])
+           .forEach(System.out::println);
+    }
+}
